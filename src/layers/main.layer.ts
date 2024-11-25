@@ -1,7 +1,8 @@
 import { BotContext, BotMethods } from "@builderbot/bot/dist/types"
 import { getHistoryParse } from "../utils/handleHistory"
 import AIClass from "../services/ai"
-import { flowSeller } from "../flows/seller.flow"
+// import { flowSeller } from "../flows/seller.flow"
+import { flowFacilitador } from '../flows/facilitador.flow'
 import { flowSchedule } from "../flows/schedule.flow"
 
 const PROMPT_DISCRIMINATOR = `### Historial de Conversación (Vendedor/Cliente) ###
@@ -34,6 +35,6 @@ export default async (_: BotContext, { state, gotoFlow, extensions }: BotMethods
 
     console.log({ prediction })
 
-    if (prediction.includes('HABLAR')) return gotoFlow(flowSeller)
+    if (prediction.includes('HABLAR')) return gotoFlow(flowFacilitador);
     if (prediction.includes('PROGRAMAR')) return gotoFlow(flowSchedule)
 }
